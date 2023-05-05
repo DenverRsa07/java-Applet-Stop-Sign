@@ -1,0 +1,58 @@
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.geom.Line2D;
+
+/**@authors: Joseph Nkomo
+ */
+public class StopSign extends Applet
+{
+
+    int[] octagonX =
+    {
+        150, 70, 70, 150, 230, 310, 310, 230
+    };
+    int[] octagonY =
+    {
+        50, 130, 210, 290, 290, 210, 130, 50
+    };
+    Font myf = new Font("Arial", Font.BOLD, 80);
+    Font f = new Font("Arial", Font.BOLD, 20);
+
+    public void init()
+    {
+        setSize(700, 500);
+        setBackground(Color.GREEN);
+    }
+
+    public void paint(Graphics g)
+    {
+        Graphics2D g2d = (Graphics2D) g;
+        // draw the octagon broder with a white colour
+        g2d.setStroke(new BasicStroke(10));
+        g.setColor(Color.WHITE);
+        g.drawPolygon(octagonX, octagonY, 8);
+
+        g.setColor(Color.red);
+        g.fillPolygon(octagonX, octagonY, 8);
+
+        g.setFont(myf);
+        g.setColor(Color.white);
+        g.drawString("STOP", 85, 200);
+
+        g.setColor(Color.white);
+        g.drawRoundRect(150, 300, 80, 30, 10, 10);
+
+        g.setColor(Color.red);
+        g2d.fillRoundRect(150, 300, 80, 30, 10, 10);
+
+        g.setFont(f);
+        g.setColor(Color.white);
+        g.drawString("4-WAY", 160, 322);
+
+        Line2D.Double myline = new Line2D.Double(190, 600, 190, 342);
+        g.setColor(Color.LIGHT_GRAY);
+        g2d.setStroke(new BasicStroke(18));
+        g2d.draw(myline);
+    }
+
+}
